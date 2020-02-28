@@ -1,0 +1,19 @@
+.info-value {
+    border: 1px solid black;
+    display: inline;
+    padding: 2%;
+    margin: 2%;
+}
+.info-label {
+    color: blue;
+    display: block;
+    font-size: large;
+    padding: 2%;
+    margin: 2%;
+}
+.info-block {
+    text-align: center;
+    border: 1px solid black;
+    padding: 5% 10%;
+    margin: 5% 30%;
+}
