@@ -8,9 +8,8 @@ function _readSensorValue() {
         success: function (response) {
             let receiveData = $.parseJSON(response).data;
             console.log(receiveData);
-            $('#sensor_value1').html(receiveData.sensor1);
-            $('#sensor_value2').html(receiveData.sensor2);
-            $('#sensor_value3').html(receiveData.sensor3);
+            $('#sensor_value1').html(receiveData[0].value);
+            $('#sensor_value2').html(receiveData[1].value);
         },
         error: function (error) {
             console.log(error)
@@ -29,7 +28,7 @@ $(function () {
             success: function (response) {
                 let receiveData = $.parseJSON(response).data;
                 console.log(receiveData);
-                $('#sensor_value4').html(receiveData.sensor4);
+                $('#sensor_value3').html(receiveData[2].value);
             },
             error: function (error) {
                 console.log(error)

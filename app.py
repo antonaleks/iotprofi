@@ -6,9 +6,30 @@ from threading import Thread
 
 from flask import Flask, render_template
 
+from mqtt import MQTTClient
+
 app = Flask(__name__)
 
-sensors = {"sensor1": random(), "sensor2": random(), "sensor3": random(), "sensor4": random()}
+sensors = [
+    {
+        "id": "temperature",
+        "name": "Температура",
+        "topic": 'base/state/temperature',
+        "value": int(random()*100)
+    },
+    {
+        "id": "humidity",
+        "name": "Влажность",
+        "topic": 'base/state/humidity',
+        "value": int(random()*100)
+    },
+    {
+        "id": "distance",
+        "name": "Расстояние",
+        "topic": 'base/state/distance',
+        "value": int(random()*100)
+    },
+]
 
 
 @app.route('/')
@@ -31,10 +52,14 @@ def simulate_data():
     i=0
     while True:
         i=i+1
-        sensors = {"sensor1": random(), "sensor2": random(), "sensor3": random(), "sensor4": i}
+        for sensor in sensors:
+            sensor["value"] = int(random()*100)
         time.sleep(1)
 
 
 if __name__ == '__main__':
     Thread(target=simulate_data, daemon=True).start()
+    client = MQTTClient(sensors=sensors)
+    client.start()
+    print("ok")
     app.run()
