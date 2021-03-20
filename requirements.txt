@@ -10,7 +10,7 @@ future==0.18.2
 gunicorn==19.9.0
 iso8601==0.1.12
 itsdangerous==1.1.0
-Jinja2==2.10
+Jinja2==2.11.3
 kafka-python==1.4.6
 MarkupSafe==1.1.1
 modbus-tk==1.1.0
